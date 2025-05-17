@@ -1,0 +1,58 @@
+📅 Devlog 
+*Date: 2025-05-17
+**Author:** Tay 
+
+### ✅ Progress Summary
+
+**Player Character Setup:**
+
+* Created and finalized a custom `BP_PlayerCharacter` Blueprint
+* Ensured proper possession via custom `BP_PlayerController`
+* Verified GameMode is set correctly with the updated Pawn and Controller
+
+**Enhanced Input System:**
+
+* Set up **Enhanced Input Mapping Contexts (IMCs)** properly
+* Resolved issue with movement not responding due to missing bindings
+* Corrected axis bindings and swizzle configurations to enable:
+
+  * `W` – Forward
+  * `S` – Backward
+  * `A` – Left
+  * `D` – Right
+
+**Toggle Mask Mechanic:**
+
+* Created the `ToggleMask` input action and event system
+* Linked mask state logic with post process volumes
+* Implemented feedback through Post Process Weight blending
+
+**Debugging Milestones:**
+
+* Troubleshot a wide array of issues:
+
+  * Input not triggering
+  * Player not moving
+  * Controller not possessing pawn
+* Refactored blueprint naming and structure to prevent confusion
+* Validated character possession and movement via output logs
+
+---
+
+### 🔍 Outstanding Tasks / Next Steps
+
+* [ ] Add jump functionality (IA\_Jump + logic)
+* [ ] Add visual UI for mask toggle (icon, screen tint, or effect)
+* [ ] Begin work on interaction inputs (E key for object/NPC use)
+* [ ] Flesh out school interior environment (starting from main entrance)
+* [ ] Document current Blueprint setups (Controller, Character, Input)
+
+---
+
+### 🧠 Notes
+
+* Unreal Engine's Enhanced Input System requires exact mapping between **IMCs, Input Actions, and Blueprints**.
+* Swizzle modifiers are essential when working with Vector2D movement to align Unreal’s internal axes.
+* Even with everything configured, GameMode and Pawn setup will block progress if not correct.
+
+
