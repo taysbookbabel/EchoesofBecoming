@@ -1,0 +1,72 @@
+🗓️ May 17, 2025 –  Log
+🎮 Game Title: Echoes of Becoming
+Chapter 1 – Unreal Engine 5.5 Development
+
+
+✅ Implemented Features
+
+* **Level Design**
+
+  * Modular **middle school interior and exterior**
+  * **Animated revolving doors** for main entrance
+  * Ground layer: tile floor and grass terrain
+
+* **Character Setup**
+
+  * Created and assigned custom **BP\_PlayerController**
+  * Assigned custom **BP\_ThirdPersonGameMode** to World Settings
+  * Confirmed **BP\_Character** as Default Pawn
+
+* **Input System**
+
+  * Enabled and configured **Enhanced Input System**
+  * Created:
+
+    * `IA_Move` (2D Axis)
+    * `IA_ToggleMask` (Action)
+    * `IMC_PlayerControls` (Input Mapping Context)
+   * Bound `W`, `A`, `S`, `D` to 2D Axis Movement
+
+  * Used `YXZ` swizzle modifier for correct direction mapping
+  * Added **Add Mapping Context** logic in `BP_PlayerController`
+  * Character **now moves in all directions** correctly
+
+---
+
+### 🔧 Currently In Progress
+
+* **Toggle Mask Mechanic**
+
+  * `IA_ToggleMask` is mapped to **Right Mouse Button**
+  * Event not triggering yet
+  * Working on binding `IA_ToggleMask` using new Enhanced Input API inside `BP_PlayerController`
+
+---
+
+🧪 Next Steps
+
+* Complete and test **input binding for `IA_ToggleMask`**
+* Replace test print with **actual mask toggle behavior**
+* Save modular environment and character blueprint as templates for future levels
+* Begin adding interactions (task pickups, sensory overload zones)
+
+---
+
+### 📂 Directory Structure (Relevant Files)
+
+```
+Content/
+├── Blueprints/
+│   ├── Characters/
+│   │   └── BP_Character
+│   ├── Controllers/
+│   │   └── BP_PlayerController
+│   └── GameModes/
+│       └── BP_ThirdPersonGameMode
+├── Input/
+│   ├── IMC_PlayerControls
+│   ├── IA_Move
+│   └── IA_ToggleMask
+
+
+
