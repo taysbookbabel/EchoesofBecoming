@@ -1,0 +1,121 @@
+📅 May 19, 2025 
+
+🎮 Player Controller Cleanup and Toggle Mask Logic
+
+- Rebuilt broken logic for toggling the mask (Right Mouse Button).
+- Created missing variables in Player Controller:
+  - `IsMasked` (Boolean)
+  - `PostProcessVolume` (PostProcessVolume Reference)
+- Connected `Get Controlled Pawn` → `Cast to BP_PlayerCharacter` for safe variable access.
+- Used `IsMasked` to dynamically adjust the `Blend Weight` of the Post Process Volume.
+- Verified successful Blueprint compilation after resolving variable reference issues.
+- System is now ready for input bindings and testing gameplay interaction.
+
+➡️ Test mask toggle functionality in-game and confirm input bindings are working correctly.
+
+[Added/Fix] Player Controller Blueprint (BP_PlayerController)
+- Re-implemented toggle mask logic using new `IsMasked` and `PostProcessVolume` variables.
+- Connected cast to `BP_PlayerCharacter` to safely toggle visual effects.
+- Fixed compile errors caused by missing variables.
+- Confirmed `Blend Weight` toggles post-processing effect correctly.
+- Created a new **PostProcessVolume** variable in the Player Controller blueprint.
+- Used **Get All Actors of Class (PostProcessVolume)** node to find all post process volumes in the current level.
+- Accessed the first post process volume in the array using the **Get(0)** node.
+- Stored this post process volume reference in the newly created variable for later use.
+- This setup ensures the player controller has a valid reference to the post process volume in the level.
+- Enables dynamic control of post process effects (like tinting) through the toggle mask functionality.
+- Added debug **Print String** to confirm successful assignment.
+- Ready to proceed with toggling post process effects at runtime using input actions.
+
+---
+
+**Next Steps:**
+
+- Implement input binding for toggle mask.
+- Test post process effect changes on toggle action.
+- Debug and refine toggle functionality
+
+---
+
+### ✅ Mid Session **Goals**
+
+- Fix the broken Toggle Mask functionality ( logic works, but visual aspect does not)
+    
+- Restore movement after changing a node reference
+    
+- Ensure Enhanced Input is properly mapped
+    
+- Clean up blueprint logic and resolve casting issues
+    
+
+---
+
+- 🎮 Character and Controller Fixes
+
+- 🔄 **Identified a casting issue**: Originally used a generic `Cast To BP_PlayerCharacter`, but updated it to the correct customized character Blueprint.
+    
+- 💥 This change **broke character movement**, since the new cast was failing silently.
+- 
+    
+- 🔍 Will have to try **Added debugging steps**:
+    
+    - Used **Print String** nodes to confirm when the character and controller were spawned.
+        
+    - Checked the Game Mode settings to verify the correct **Default Pawn Class** and **Player Controller Class** were used.
+        
+- ✅ Fixed the cast and confirmed it was pointing to the correct custom Blueprint.
+    
+
+---
+
+🎛️ Input and Mask Toggle Troubleshooting
+
+- 🧠 Rebuilt the Toggle Mask logic in the Player Controller:
+    
+    - Re-created the `isMasked` variable.
+        
+    - Added a **reference to the Post Process Volume** via a new exposed variable.
+        
+    - Ensured a cast to the correct Player Character before accessing toggle-related variables.
+        
+- 🧪 Confirmed that the **Print String worked**, meaning the input was firing.
+    
+- 🔁 Fixed an issue where the **Post Process Volume effect was always on**:
+    
+    - Set Blend Weight to `0` on Begin Play.
+        
+    - Used the `Set Blend Weight` node in the Toggle logic to switch between 0 and 1.
+        
+- 📦 Verified that the Post Process Volume is **set in the Level** and **referenced by the Player Controller** via `GetActorOfClass` → `Get(0)` → promote to variable.
+    
+
+---
+
+### 🧩 Blueprint Cleanup & Input Bindings
+
+- 🛠️ Cleaned up unnecessary nodes like `FlipFlop` and unused casts.
+    
+- 🧼 Verified that Enhanced Input Mapping Context (IMC) is added at runtime:
+    
+    - `Get Player Controller` → `Get Local Player Subsystem` → `Add Mapping Context`
+        
+- 🎮 Ensured that all inputs — including movement — were working after restoring correct casts and variable links.
+    
+
+---
+
+🧠 Lessons Learned
+
+- Always verify Game Mode class settings when switching to custom Blueprints.
+    
+- Cast failures can silently break functionality — debug with Print Strings.
+    
+- Input won't register if Mapping Contexts aren’t active or if the possessed pawn is incorrect.
+    
+- The Player Controller needs proper references to in-level actors (like Post Process Volumes) for gameplay effects to trigger.
+    
+
+
+
+
+
