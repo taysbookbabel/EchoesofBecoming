@@ -3,7 +3,7 @@
 Outline
 
  Chapter 1: The Masked World 
-Tone: Confusing, overwhelming, fragmented.
+Tone: Confusing, overwhelming, fragmented. School setting.
 
 Mechanics: Input lag, unclear controls (symbolizing struggle to navigate life without understanding).
 
